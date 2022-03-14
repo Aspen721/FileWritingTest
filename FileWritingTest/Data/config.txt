@@ -1,0 +1,11 @@
+//Name
+Name_MinLength = 2
+Name_MaxLength = 30
+
+//Age
+Age_Max = 180
+Age_DenyThreshold = 16
+Age_AuthThreshold = 18
+
+//Marital
+MaritalStatusArray = Single, Married
