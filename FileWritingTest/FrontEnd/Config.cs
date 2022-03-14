@@ -37,7 +37,6 @@ namespace FileWritingTest
         //Configuration values
         //Readonly to prevent changing elsewhere in the project
         //Nullable to differentiate default values from explicit declarations
-        public int EmployeePin { get; }
         public int Name_MinLength { get; }
         public int Name_MaxLength { get; }
         public int Age_Max { get; }
