@@ -1,7 +1,9 @@
-# EscherAssignment
- This project is intended to be a showcase of various things I can do with C# .NET. It takes various bits of data from the user and saves the information into a CSV file `people.txt` delimited by `|` characters. It will also read from this file to ensure that the details of each person entered are matched with a unique ID. Spouse information can also be entered if the person indicates that they are married. This information is written to `spouse.txt`. Both of these files are saved in the 'Records' folder in the directory where the exe is run.
+# Escher Project
+Please open this in Visual Studio 2022! This project relies on .NET 6.0
 
- In order to accomplish this, information is gathered incrementally through the CLI. This information is written to the fields of a `PersonDetails` object and a `SpouseDetails` object if necessary, then this object is written to a file through the use of CSVHelper. That library can be found here: https://joshclose.github.io/CsvHelper/
+This project is intended to be a showcase of various things I can do with C# .NET. It takes various bits of data from the user and saves the information into a CSV file `people.txt` delimited by `|` characters. It will also read from this file to ensure that the details of each person entered are matched with a unique ID. Spouse information can also be entered if the person indicates that they are married. This information is written to `spouse.txt`. Both of these files are saved in the 'Records' folder in the directory where the exe is run.
+
+In order to accomplish this, information is gathered incrementally through the CLI. This information is written to the fields of a `PersonDetails` object and a `SpouseDetails` object if necessary, then this object is written to a file through the use of CSVHelper. That library can be found here: https://joshclose.github.io/CsvHelper/
 
 The `PersonDetails` and `SpouseDetails` objects were written to be as simple as possible for versatility purposes. The details of each are as follows.
 
@@ -104,8 +106,8 @@ However, the `PersonDetailsReaderWriter` is designed to detect the filetype of t
 
 If I had more time I would implement:
 
--More and better unit tests. I am still very new to TDD and NUnit and it shows. I'm willing to put in the effort to learn though because I like the idea a lot.
--JSON and XML support, as these are the two most popular ways of persisting files and formating objects to send to a server
--Database support for keeping all this info in a more logical format that runs 24/7
+1. More and better unit tests. I am still very new to TDD and NUnit and it shows. I'm willing to put in the effort to learn though because I like the idea a lot.
+2. JSON and XML support, as these are the two most popular ways of persisting files and formating objects to send to a server
+3. Database support for keeping all this info in a more logical format that runs 24/7
 
 Plus I would refactor things just a bit. But hopefully it's organized and readable enough as it is!
