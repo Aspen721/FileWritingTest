@@ -135,7 +135,7 @@ namespace FileWritingTest
                     break;
                 case State.Authorize:
                 case State.Save:
-                case State.Restart:
+                case State.ConfirmRestart:
                     validatedInput = InputValidationMethods.ValidateBoolean(userInput);
                     break;
             }

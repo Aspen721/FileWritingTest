@@ -99,7 +99,7 @@ namespace FileWritingTest
         {
             public SpouseDetailsMap()
             {
-                Map(m => m.HusbandId).Index(0);
+                Map(m => m.SpouseID).Index(0);
                 Map(m => m.FirstName).Index(1);
                 Map(m => m.Surname).Index(2);
                 Map(m => m.BirthDate).Index(3);

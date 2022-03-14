@@ -8,14 +8,14 @@ namespace FileWritingTest
 {
     public class SpouseDetails
     {
-        public int HusbandId { get; }
+        public int SpouseID { get; }
         public string FirstName { get; set; }
         public string Surname { get; set; }
         public DateOnly BirthDate { get; set; }
 
         public SpouseDetails(int HusbandId)
         {
-            this.HusbandId = HusbandId;
+            this.SpouseID = HusbandId;
             FirstName = "";
             Surname = "";
         }

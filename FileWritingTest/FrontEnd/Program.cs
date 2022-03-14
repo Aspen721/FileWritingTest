@@ -38,7 +38,8 @@ do
 
     //Data gathering loop
     while (inputProcessor.GetCurrentState() != State.Confirmed &&
-           inputProcessor.GetCurrentState() != State.Denied)
+           inputProcessor.GetCurrentState() != State.Denied &&
+           inputProcessor.GetCurrentState() != State.Restart)
     {
         int startTop = Console.CursorTop;
 
@@ -79,15 +80,18 @@ do
     }
 
     //Write to file, print confirmation, and reset application
-    currentPrompt.Clear();
-    currentPrompt.Append(inputProcessor.GetStateText());
-    inputProcessor.ReturnToStart();
-    Console.WriteLine(currentPrompt.ToString());
-    for(int i = 5; i > 0; i--)
+    if (inputProcessor.GetCurrentState() != State.Restart)
     {
-        Console.WriteLine("..." + i);
-        Thread.Sleep(1000);
+        currentPrompt.Clear();
+        currentPrompt.Append(inputProcessor.GetStateText());
+        Console.WriteLine(currentPrompt.ToString());
+        for (int i = 5; i > 0; i--)
+        {
+            Console.WriteLine("..." + i);
+            Thread.Sleep(1000);
+        }
     }
+    inputProcessor.ReturnToStart();
     Console.Clear();
 
 } while (true);

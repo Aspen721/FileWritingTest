@@ -107,7 +107,6 @@ namespace FileWritingTest
                 { new StateTransition(State.SpouseSurname, Command.Restart), State.ConfirmRestart },
                 { new StateTransition(State.SpouseBirthDate, Command.Restart), State.ConfirmRestart },
                 { new StateTransition(State.ConfirmRestart, Command.Continue), State.Restart },
-                { new StateTransition(State.ConfirmRestart, Command.Back), previousState },
                 //Restart Transitions End
                 { new StateTransition(State.Confirmed, Command.Continue), State.FirstName }, //no inputs allowed here
                 { new StateTransition(State.Denied, Command.Continue), State.FirstName }, //or here
@@ -128,7 +127,7 @@ namespace FileWritingTest
                 { State.Save, new StateInfo(Strings.Save.Prompt, Strings.Save.Info) },
                 { State.Confirmed, new StateInfo(Strings.Confirmed.Prompt, Strings.Confirmed.Info) },
                 { State.Denied, new StateInfo(Strings.Denied.Prompt, Strings.Denied.Info) },
-                { State.Restart, new StateInfo(Strings.Restart.Prompt, Strings.Restart.Info) }
+                { State.ConfirmRestart, new StateInfo(Strings.Restart.Prompt, Strings.Restart.Info) }
             };
         }
         #endregion
@@ -145,11 +144,16 @@ namespace FileWritingTest
         public State Transition(Command command)
         {
             StateTransition transition = new(CurrentState, command);
-            if (!transitionsDictionary.TryGetValue(transition, out State nextState))
-                throw new InvalidOperationException("Invalid transition: " + CurrentState + " -> " + command);
-            previousState = CurrentState;
-            CurrentState = nextState;
-            return nextState;
+            if (CurrentState == State.ConfirmRestart && command == Command.Back)
+                CurrentState = previousState;
+            else
+            {
+                if (!transitionsDictionary.TryGetValue(transition, out State nextState))
+                    throw new InvalidOperationException("Invalid transition: " + CurrentState + " -> " + command);
+                previousState = CurrentState;
+                CurrentState = nextState;
+            }
+            return CurrentState;
         }
 
         /// <summary>
